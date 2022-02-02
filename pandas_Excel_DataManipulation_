@@ -48,6 +48,10 @@ for row in range(1,n+1):
     
     i+=1
 
+pd.set_option('display.max_columns', None)  # or 1000
+#pd.set_option('display.max_rows', None)  # or 1000
+pd.set_option('display.max_colwidth', None)  # or 199
+
 print("\n\nPREVIOUS TABLE : \n",df)
 df = df.drop("Comment", axis=1)
 df = df.join(new_column_df)
@@ -60,4 +64,4 @@ df.to_excel(writer,index=False,startrow=0,startcol=0,engine='openpyxl')
 # save the excel
 writer.save()
 
-print('DataFrame is written successfully to Excel File.')
+print('\nDataFrame is written successfully to Excel File.')
