@@ -5,6 +5,8 @@ Created on Wed Feb 2  02:18:23 2022
 
 @author: koral007
 """
+# FLOW-CHART  AND  CONSOLE OUTPUT  : https://gitmind.com/app/flowchart/3488257405
+
 import pandas as pd
 
 file_name =   '/home/koral007/Downloads/5A05.xlsx'
