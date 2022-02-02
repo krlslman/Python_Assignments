@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Feb 2  02:18:23 2022
+
+@author: koral007
+"""
+import pandas as pd
+
+file_name =   '/home/koral007/Downloads/5A05.xlsx'
+sheet = 'Sheet1'
+df = pd.read_excel(io=file_name, sheet_name=sheet)
+i=0
+n=6   #  ADJUST THIS NUMBER TO YOUR RECORD AMOUNT
+
+column_names = ['Comment']
+new_column_df = pd.DataFrame(columns = column_names)
+
+for row in range(1,n+1):    
+    name = df['Name'][i]
+    grade = df['Grade'][i]
+    gender = df['Gender'][i]
+    
+    #Grade
+    if grade == 10:                
+        str_comment = f"{name} is a very clever student."
+    elif grade == 9:
+        str_comment = f"{name} is a clever student."
+    elif grade == 8:
+        str_comment = f"{name} is a good student."
+    elif grade == 7:
+        str_comment = f"{name} is an average student."
+    elif grade < 7:
+        str_comment = f"{name} need to study much harder."
+    else:
+        print("error 11")
+        
+    #Gender            
+    if gender == 'Male': 
+        str_comment += " " + f"{name} likes to play football."
+    elif gender == 'Female': 
+        str_comment += " "+ f"{name} likes to play volleyball."
+    else:
+        print("error12")
+        
+    #append to new dataframe
+    new_column_df.loc[i] = [str_comment] 
+    
+    i+=1
+
+print("\n\nPREVIOUS TABLE : \n",df)
+df = df.drop("Comment", axis=1)
+df = df.join(new_column_df)
+print("\n\nNEW TABLE : \n",df)    
+
+# create excel writer object
+writer = pd.ExcelWriter('/home/koral007/Downloads/try.xlsx')
+# write dataframe to excel
+df.to_excel(writer,index=False,startrow=0,startcol=0,engine='openpyxl')
+# save the excel
+writer.save()
+
+print('DataFrame is written successfully to Excel File.')
