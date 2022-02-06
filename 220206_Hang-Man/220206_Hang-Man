@@ -1,0 +1,38 @@
+"""
+@author: koral007
+HANG-MAN
+FLOWCHART : https://gitmind.com/app/flowchart/3b769be0fe8dee9d81613c6150e2e81e
+"""
+
+import random
+print("Welcome to HANG_MAN")
+
+vocabs = ["ESPECIALLY", "SPECIAL"]
+#vocabs=vocabs.upper()
+cpu_choice = random.choice(vocabs)
+cpu_choice = list(cpu_choice)
+lenw = len(cpu_choice)
+ch_printed = []
+for i in range(lenw+1):
+    ch_printed.append("_")
+
+while True:
+    u_inp = str(input("gir bakalım bi harf : ").upper())  #EDİT
+    if u_inp in cpu_choice:
+        break
+print(cpu_choice)
+print(len(cpu_choice))    #test
+indexes = []    
+
+for index in len(cpu_choice):      # xxx + or - 1 bak bi  
+    if index in cpu_choice:
+        indexes.append(index)
+    else:
+        print("kelime içinde ",u_inp, " harfi yok")
+
+#replace
+for a in range(len(indexes)):
+    u_inp.replace("_", a)
+    print(indexes)  # test purpose
+    
+print(ch_printed)
