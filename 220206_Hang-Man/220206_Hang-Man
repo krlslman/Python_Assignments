@@ -3,36 +3,50 @@
 HANG-MAN
 FLOWCHART : https://gitmind.com/app/flowchart/3b769be0fe8dee9d81613c6150e2e81e
 """
-
 import random
-print("Welcome to HANG_MAN")
-
-vocabs = ["ESPECIALLY", "SPECIAL"]
-#vocabs=vocabs.upper()
+print("\nWelcome to HANG_MAN\n")
+vocabs = ["ESPECIALLY"]
 cpu_choice = random.choice(vocabs)
 cpu_choice = list(cpu_choice)
 lenw = len(cpu_choice)
 ch_printed = []
-for i in range(lenw+1):
+for i in range(lenw):
     ch_printed.append("_")
+true_chars = int(len(ch_printed)) - int(ch_printed.count("_"))
 
-while True:
-    u_inp = str(input("gir bakalım bi harf : ").upper())  #EDİT
-    if u_inp in cpu_choice:
-        break
-print(cpu_choice)
-print(len(cpu_choice))    #test
-indexes = []    
+print("\nKEY WORD : ", ch_printed)
+# x=(len(cpu_choice))
+# y= x*1, 
+life= int((len(cpu_choice))*1.5)
+used_chars= []
 
-for index in len(cpu_choice):      # xxx + or - 1 bak bi  
-    if index in cpu_choice:
-        indexes.append(index)
+while true_chars<len(cpu_choice)  :
+    while life>0:    
+        u_inp = str(input("\nEnter a char : ").upper())  #EDİT
+        if (u_inp in cpu_choice) and (u_inp not in used_chars):
+            indexes = []    
+            for i in range(lenw):     
+                letter = cpu_choice[i] 
+                if letter == u_inp:   #(i in cpu_choice): #and (i not in ch_printed):
+                    indexes.append(i)
+
+            #replace
+            for a in range(len(indexes)):
+                changed_letter = cpu_choice[int(indexes[a])]
+                ch_printed[indexes[a]] = changed_letter
+                # left_ch = left_ch - len(indexes)
+                true_chars = len(ch_printed) - ch_printed.count("_")        
+            print("\nKEY WORD : ", ch_printed)
+            
+            indexes = []
+        else:
+            print("\nNo matches, Try again !!!")
+            print("\nKEY WORD : ", ch_printed)
+            life-=1
+
+    if true_chars == len(cpu_choice) :
+        print("\nCONGRATULATIONS!  YOU WIN!")
+
     else:
-        print("kelime içinde ",u_inp, " harfi yok")
-
-#replace
-for a in range(len(indexes)):
-    u_inp.replace("_", a)
-    print(indexes)  # test purpose
-    
-print(ch_printed)
+        print("\nYOU LOST!")
+        break
