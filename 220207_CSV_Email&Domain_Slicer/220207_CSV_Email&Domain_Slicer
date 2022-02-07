@@ -1,0 +1,20 @@
+from itertools import count
+
+from matplotlib.pyplot import get
+
+csv_text = "beautifulDale81@aliceadsl.fr,Brettfaithful@t-online.de,hungryBruce45@freenet.de,Tiffanyfilthy@ymail.com"
+#,fineBrenda@juno.com,Larryoutstanding@live.ca,Patriciamisty@ymail.com,Hollywicked@comcast.net,Rodneyblushing@skynet.be,Kateadventurous@yahoo.fr,soreSeth40@outlook.com,embarrassedCheryl55@yahoo.com.sg,Karijealous@gmx.de,Annaclean@hotmail.de,bloodyMallory@optonline.net,alertApril3@rocketmail.com,Zacharybeautiful@yahoo.com.au,Katieaverage@outlook.com,Shannongentle@free.fr,brightJustin@yahoo.fr,Shanalonely@outlook.com,Rebeccaclear@mail.com,Susanamused@home.nl,adorableBarbara69@shaw.ca,Arthurplain@mail.com,lazyVirginia@shaw.ca,cleanCory@live.ca,bloodyLance@free.fr,condemnedJoy@qq.com,delightfulDominic88@free.fr,cooperativeRoy@voila.fr,livelyClaudia8@hotmail.es,braveDaisy76@bigpond.net.au,drabKathryn@earthlink.net,Sierraaverage@aliceadsl.fr,determinedMaurice@bellsouth.net,selfishJanelle27@hotmail.es,Shannadefeated@gmx.net,Annarelieved@yahoo.com.mx,foolishMario42@home.nl,anxiousLogan@yahoo.co.jp,uptightMiguel25@telenet.be,gleamingBrenda32@me.com,putridRose@frontiernet.net,Brandylucky@skynet.be,enthusiasticMelanie2@live.com,Claytonpowerful@yahoo.com.au,Rogervivacious@blueyonder.co.uk,busyMary43@bluewin.ch,colorfulMolly@live.ca"
+email_list = csv_text.split(",")
+print("\n")
+email_dict = {}
+
+for email in email_list:
+    at = email.index("@")
+    user = email[:at]
+    domain = email[at+1::]
+    to_add = {email:{'username':user,'domain':domain}}
+    email_dict.update(to_add)
+
+print(email_dict)
+
+
