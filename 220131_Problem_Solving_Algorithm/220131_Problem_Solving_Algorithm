@@ -1,0 +1,60 @@
+"""
+Created on Mon Jan 31 20:01:20 2022
+
+@author: koral007
+"""
+
+#Problem solving FLOWCHART: https://gitmind.com/app/flowchart/9f78249438
+
+q1 = str(input("DOES IT WORK? (yes/no) : ")).lower().strip()
+if q1 == 'yes':
+    q2 = str(input("MESS WITH IT? (yes/no) : ")).lower().strip()
+    if q2 == 'yes':
+       print("\nYOU IDIOT! ") #q3
+       q6 = str(input("DOES ANYONE KNOW? (yes/no) : ")).lower().strip()
+       if q6 == 'yes':
+           print("\nYOU POOR IDIOT! ") #q7
+           while True:
+               q9 = str(input("CAN YOU BLAME SOMEONE ELSE? (yes/no) : ")).lower().strip()
+               if q9 == 'yes':
+                   print('N O  P R O B L E M ;)')
+                   break
+               else:
+                   print("\nYOU POOR IDIOT! ") #q7
+       else: #q6
+           print('N O  P R O B L E M ;)')                        
+    else: #q2
+        print('N O  P R O B L E M ;)')
+            
+           
+else:
+    q4 = str(input("DO YOU MESS WITH IT? (yes/no) : ")).lower().strip()
+    if q4=='yes':
+       print("\nYOU IDIOT! ") #q3
+       q6 = str(input("DOES ANYONE KNOW? (yes/no) : ")).lower().strip()
+       if q6 == 'yes':
+           print("\nYOU POOR IDIOT! ") #q7
+           while True:
+               q9 = str(input("CAN YOU BLAME SOMEONE ELSE? (yes/no) : ")).lower().strip()
+               if q9 == 'yes':
+                   print('N O  P R O B L E M ;)')
+                   break
+               else:
+                   print("\nYOU POOR IDIOT! ") #q7
+       else: #q6
+           print('N O  P R O B L E M ;)')
+           
+    else: #q4
+        q8 = str(input("WILL YOU GET INTO TROUBLE? (yes/no) : ")).lower().strip()
+        if q8 == 'yes':
+            print("\nYOU POOR IDIOT! ") #q7
+            while True:
+                q9 = str(input("CAN YOU BLAME SOMEONE ELSE? (yes/no) : ")).lower().strip()
+                if q9 == 'yes':
+                    print('N O  P R O B L E M ;)')
+                    break
+                else:
+                    print("\nYOU POOR IDIOT! ") #q7
+        else: #q10
+            print("TRASH IT")            
+            print('N O  P R O B L E M ;)')
