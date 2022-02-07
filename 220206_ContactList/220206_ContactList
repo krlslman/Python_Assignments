@@ -1,0 +1,63 @@
+"""
+Created on Mon Feb  7 01:50:31 2022
+
+@author: koral007
+FLOWCHART : https://gitmind.com/app/flowchart/fbe8406237
+"""
+
+dicti = {}
+list_inp = []
+
+
+
+add_more = "y"
+while add_more == "y":
+    name = str("seko")
+    address = str(" Uzgo St.")
+    phone = str("+90503018111 ")
+    email = str(name,"@gmail.com ",sep="")
+    
+    # name = str(input("Please enter your name&surname : "))
+    # address = str(input("Please enter your address : "))
+    # phone = str(input("Please enter your phone number : "))
+    # email = str(input("Please enter your email : "))
+    
+    list_inp.append(name)
+    list_inp.append(address)
+    list_inp.append(phone)
+    list_inp.append(email)                      
+    
+    len_dicti = len(dicti)
+    
+    dicti[str(len_dicti)] = list_inp
+    list_inp = []
+    print(dicti)
+
+    add_more = str(input("Do you want to add another one?  (Y or N) : ")).lower()
+    if add_more == "n":
+        break
+
+anything_else = str(input("Do you want to make another change? \n (Y or N) : ")).lower()
+if anything_else  == "n":
+    print(dicti)
+else:
+    del_or_up = str(input("Delete / Uptade   (D or U) : ")).lower()
+    if del_or_up == "d":
+        delete_key = str(input("Please enter the key of the line you wanna drop : ")).lower()
+        del_name = [dicti.get(delete_key)][0][0]
+        dicti.pop(delete_key)
+        print("All the information about '",del_name, "' has been deleted from database.",sep="")
+        print(dicti)       
+    else:  #To Update;
+        update_key = str(input("Please enter the key of the line you wanna update : ")).lower()
+        Update_list = dicti.get(update_key) 
+        update_value_num = int(input("""
+Choose from belove;\n
+Press 0  for update "name" field\n
+Press 1  for update "address" field\n
+Press 2  for update "phone" field\n
+Press 3  for update "email" field\n\tAnswer  :  """).lower())
+                                    
+        Update_list[update_value_num] = str(input("Enter new value : "))
+        dicti.update({update_key : Update_list})
+        print(dicti)
