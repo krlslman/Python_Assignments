@@ -15,6 +15,17 @@ for email in email_list:
     to_add = {email:{'username':user,'domain':domain}}
     email_dict.update(to_add)
 
-print(email_dict)
+#print(email_dict)
+
+domains = []
+for key, value in email_dict.items():
+    domains.append(email_dict[key]["domain"])
+print(domains)
+
+usernames = []
+for key, value in email_dict.items():
+    usernames.append(email_dict[key]["username"])
+print(usernames)
+
 
 
