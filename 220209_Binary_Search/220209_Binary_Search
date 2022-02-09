@@ -1,0 +1,30 @@
+# flow-chart:  https://gitmind.com/app/flowchart/7cb3b648d8dc35c526d17f87f559fb54
+
+import random
+
+u_inp = int(input("Enter an integer number between 1-100: "))
+rand = random.randint(1,101)
+choice_list =[0,1]
+rand_list = []
+
+while True:
+	choice = random.choice(choice_list)
+	print(choice)
+	if choice == 1:
+		rand+=2
+	else:
+		rand-=2
+	rand_list.append(rand)
+	if rand<1 or rand>100 or rand == u_inp:
+		print(rand_list)
+		if u_inp in rand_list:
+			print("USER WIN !  USER INPUT IS IN THE LIST")
+			break
+		else:
+			if rand<1:
+				print("USER LOST !  RANDOM REACHED TO ZERO!")
+				break
+			else:
+				print("USER LOST !  RANDOM REACHED TO ONE HUNDRED!")
+				break 
+	
