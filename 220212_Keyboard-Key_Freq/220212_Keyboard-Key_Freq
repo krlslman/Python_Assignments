@@ -1,0 +1,39 @@
+import opcode
+from posixpath import split
+from turtle import left, right
+
+left_keys = "QWERTASDFGZXCVB"
+right_keys = "YUIOPĞÜHJKLŞİNMÖÇ"
+lefts = list(left_keys)
+rights= list(right_keys)
+
+print(lefts)
+print(rights)
+
+u_inp = str(input("Please enter a word : ")).upper()
+only_left = None
+only_right = None
+
+for char in u_inp:
+	if char in lefts:
+		only_left = True
+	else:
+		only_left = False
+		break
+
+if only_left == True:
+	print("You should use only left hand")
+else:
+	for char in u_inp:
+		if char in rights:
+			only_right = True
+		else:
+			only_right = False 
+			break
+
+	if only_right == True:
+		print("You should use only right hand")
+	else:
+		print("You should use both hands")		
+only_left = None
+only_right = None
