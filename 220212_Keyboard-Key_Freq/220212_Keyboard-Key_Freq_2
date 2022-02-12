@@ -1,0 +1,60 @@
+# import numpy
+import matplotlib.pyplot as plt
+
+import opcode
+from posixpath import split
+from turtle import left, right
+
+L_pinky = list("1QAZ")
+L_ring = list("2WSX")
+L_middle = list("3EDC")
+L_index = list("4RFV5TGB")
+R_index = list("6YHN7UJM")
+R_middle = list("8IKÖ")
+R_ring = list("9OLÇ")
+R_pinky = list("0PĞÜŞİ.,")
+
+# u_inp = str(input("Please enter a word : ")).upper().strip() 
+
+u_inp = str("assdddffffjjjjjkkkkkklllllllşşşşşşşş").upper()
+
+L_pinky_counter		= 0
+L_ring_counter		= 0
+L_middle_counter	= 0
+L_index_counter		= 0
+R_index_counter		= 0
+R_middle_counter	= 0
+R_ring_counter		= 0
+R_pinky_counter		= 0
+
+for char in u_inp:
+	if char in L_pinky:
+		L_pinky_counter = L_pinky_counter +1
+	elif char in L_ring:
+		L_ring_counter = L_ring_counter + 1
+	elif char in L_middle:
+		L_middle_counter +=1
+	elif char in L_index:
+		L_index_counter +=1
+	elif char in R_index:
+		R_index_counter +=1
+	elif char in R_middle:
+		R_middle_counter +=1
+	elif char in R_ring:
+		R_ring_counter +=1
+	elif char in R_pinky:
+		R_pinky_counter +=1
+	else:
+		print("error001")
+
+
+fingers_one = " L_pinky , L_ring , L_middle , L_index , R_index , R_middle  ,R_ring , R_pinky "
+fingers =  fingers_one.split(",")
+press_counts = [L_pinky_counter,L_ring_counter,L_middle_counter,L_index_counter,R_index_counter,R_middle_counter,R_ring_counter,R_pinky_counter]
+
+plt.xticks(rotation=70)
+plt.bar(fingers, press_counts, width=0.8 , align='center', color=['orange','red','orange','red','orange','red','orange','red'])
+plt.title('Frequency of Keys')
+plt.xlabel('Fingers')
+plt.ylabel('Number of Press')
+plt.show()
