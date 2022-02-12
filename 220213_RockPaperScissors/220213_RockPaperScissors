@@ -1,0 +1,19 @@
+import random
+score = 0
+list = [ "R", "P", "S"]
+n = int(input("After how many rounds?  : "))
+i=0
+while i<n:
+	cpu_choice = random.choice(list)
+	user_choice = str(input("R / P / S ?  : ")).upper()
+	#print(cpu_choice)
+	if user_choice == cpu_choice:
+		score+=1
+	else:
+		score-=0  #change if you want
+	i+=1
+print("score : ",score,"  Result : ",end="")
+if score> n/2:
+	print("You win!")
+else:
+	print("You lost!")
