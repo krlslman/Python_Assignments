@@ -1,39 +1,20 @@
-import opcode
-from posixpath import split
-from turtle import left, right
+lefts = list("QWERTASDFGZXCVB")
+rights = list("YUIOPĞÜHJqwKLŞİNMÖÇ")
 
-left_keys = "QWERTASDFGZXCVB"
-right_keys = "YUIOPĞÜHJKLŞİNMÖÇ"
-lefts = list(left_keys)
-rights= list(right_keys)
+u_inp = str(input("Welcome!  Enter a word to see if it is a 'comfortable word' : ")).upper()
 
-print(lefts)
-print(rights)
-
-u_inp = str(input("Please enter a word : ")).upper()
-only_left = None
-only_right = None
+only_left_c = 0
+only_right_c = 0
+both_hand = False
 
 for char in u_inp:
 	if char in lefts:
-		only_left = True
-	else:
-		only_left = False
-		break
+		only_left_c +=1
+	elif char in rights:
+		only_right_c +=1
 
-if only_left == True:
-	print("You should use only left hand")
-else:
-	for char in u_inp:
-		if char in rights:
-			only_right = True
-		else:
-			only_right = False 
-			break
-
-	if only_right == True:
-		print("You should use only right hand")
-	else:
-		print("You should use both hands")		
-only_left = None
-only_right = None
+if only_left_c + only_right_c > 1:
+	both_hand = True
+print(both_hand)
+only_left_c = 0
+only_right_c = 0
