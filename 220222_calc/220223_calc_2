@@ -1,0 +1,645 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'calc_2.ui'
+#
+# Created by: PyQt5 UI code generator 5.9.2
+#
+# WARNING! All changes made in this file will be lost!
+
+from ast import operator
+from dataclasses import replace
+from posixpath import split
+from turtle import screensize
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(508, 728)
+        MainWindow.setFixedSize(508,728)  # boyutu sabitle
+        MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(5, 149, 495, 530))
+        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.eight_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("8")) 
+        self.eight_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.eight_pbtn.setFont(font)
+        self.eight_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"")
+        self.eight_pbtn.setObjectName("eight_pbtn")
+        self.gridLayout.addWidget(self.eight_pbtn, 1, 1, 1, 1)
+        self.four_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("4"))
+        self.four_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.four_pbtn.setFont(font)
+        self.four_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.four_pbtn.setObjectName("four_pbtn")
+        self.gridLayout.addWidget(self.four_pbtn, 2, 0, 1, 1)
+        self.percent_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("%"))
+        self.percent_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.percent_pbtn.setFont(font)
+        self.percent_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(166, 166, 166);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(197, 197, 197);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.percent_pbtn.setObjectName("percent_pbtn")
+        self.gridLayout.addWidget(self.percent_pbtn, 0, 0, 1, 1)
+        self.dot_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.decimal_it("."))
+        self.dot_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.dot_pbtn.setFont(font)
+        self.dot_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(166, 166, 166);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(197, 197, 197);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.dot_pbtn.setObjectName("dot_pbtn")
+        self.gridLayout.addWidget(self.dot_pbtn, 4, 0, 1, 1)
+        self.one_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("1"))
+        self.one_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.one_pbtn.setFont(font)
+        self.one_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.one_pbtn.setObjectName("one_pbtn")
+        self.gridLayout.addWidget(self.one_pbtn, 3, 0, 1, 1)
+        self.seven_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("7"))
+        self.seven_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.seven_pbtn.setFont(font)
+        self.seven_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.seven_pbtn.setObjectName("seven_pbtn")
+        self.gridLayout.addWidget(self.seven_pbtn, 1, 0, 1, 1)
+        self.five_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("5"))
+        self.five_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.five_pbtn.setFont(font)
+        self.five_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.five_pbtn.setObjectName("five_pbtn")
+        self.gridLayout.addWidget(self.five_pbtn, 2, 1, 1, 1)
+        self.two_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("2"))
+        self.two_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.two_pbtn.setFont(font)
+        self.two_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.two_pbtn.setObjectName("two_pbtn")
+        self.gridLayout.addWidget(self.two_pbtn, 3, 1, 1, 1)
+        self.zero_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("0"))
+        self.zero_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.zero_pbtn.setFont(font)
+        self.zero_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.zero_pbtn.setObjectName("zero_pbtn")
+        self.gridLayout.addWidget(self.zero_pbtn, 4, 1, 1, 1)
+        self.six_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("6"))
+        self.six_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.six_pbtn.setFont(font)
+        self.six_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.six_pbtn.setObjectName("six_pbtn")
+        self.gridLayout.addWidget(self.six_pbtn, 2, 2, 1, 1)
+        self.three_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("3"))
+        self.three_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.three_pbtn.setFont(font)
+        self.three_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.three_pbtn.setObjectName("three_pbtn")
+        self.gridLayout.addWidget(self.three_pbtn, 3, 2, 1, 1)
+        self.nine_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it("9"))
+        self.nine_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.nine_pbtn.setFont(font)
+        self.nine_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(95, 95, 95);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.nine_pbtn.setObjectName("nine_pbtn")
+        self.gridLayout.addWidget(self.nine_pbtn, 1, 2, 1, 1)
+        self.clear_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.clear_it())
+        self.clear_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.clear_pbtn.setFont(font)
+        self.clear_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(166, 166, 166);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(197, 197, 197);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.clear_pbtn.setObjectName("clear_pbtn")
+        self.gridLayout.addWidget(self.clear_pbtn, 0, 1, 1, 1)
+        self.equal_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.math_result())
+        self.equal_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.equal_pbtn.setFont(font)
+        self.equal_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(166, 166, 166);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(197, 197, 197);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.equal_pbtn.setObjectName("equal_pbtn")
+        self.gridLayout.addWidget(self.equal_pbtn, 4, 2, 1, 1)
+        self.addition_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it('+'))
+        self.addition_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.addition_pbtn.setFont(font)
+        self.addition_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(255, 150, 3);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(255, 173, 78);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.addition_pbtn.setObjectName("addition_pbtn")
+        self.gridLayout.addWidget(self.addition_pbtn, 4, 3, 1, 1)
+        self.substract_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it('-'))
+        self.substract_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.substract_pbtn.setFont(font)
+        self.substract_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(255, 150, 3);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(255, 173, 78);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.substract_pbtn.setObjectName("substract_pbtn")
+        self.gridLayout.addWidget(self.substract_pbtn, 3, 3, 1, 1)
+        self.multiply_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it('*'))
+        self.multiply_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.multiply_pbtn.setFont(font)
+        self.multiply_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(255, 150, 3);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(255, 173, 78);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.multiply_pbtn.setObjectName("multiply_pbtn")
+        self.gridLayout.addWidget(self.multiply_pbtn, 2, 3, 1, 1)
+        self.divide_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.press_it('/'))
+        self.divide_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.divide_pbtn.setFont(font)
+        self.divide_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(3, 3, 3);\n"
+"    background-color: rgb(255, 150, 3);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(255, 173, 78);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.divide_pbtn.setObjectName("divide_pbtn")
+        self.gridLayout.addWidget(self.divide_pbtn, 1, 3, 1, 1)
+        self.delete_pbtn = QtWidgets.QPushButton(self.gridLayoutWidget, clicked = lambda: self.remove_it())
+        self.delete_pbtn.setMinimumSize(QtCore.QSize(0, 90))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.delete_pbtn.setFont(font)
+        self.delete_pbtn.setStyleSheet("QPushButton {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color:   rgb(3, 3, 3);\n"
+"    background-color: rgb(166, 166, 166);\n"
+"    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    border-radius: 40px;\n"
+"    border-style: outset;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  rgb(197, 197, 197);\n"
+"    padding: 1px;\n"
+"    }\n"
+"")
+        self.delete_pbtn.setObjectName("delete_pbtn")
+        self.gridLayout.addWidget(self.delete_pbtn, 0, 2, 1, 2)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(6, 0, 493, 141))
+        font = QtGui.QFont()
+        font.setFamily("Tahoma")
+        font.setPointSize(24)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.label.setStyleSheet("color: rgb(234, 234, 234);\n"
+"border: 1px rgb(166, 166, 166);\n"
+"border-radius: 20px;\n"
+"border-style: outset;\n"
+"")
+        self.label.setFrameShape(QtWidgets.QFrame.Box)
+        self.label.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label.setIndent(10)
+        self.label.setObjectName("label")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 508, 26))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+
+
+
+
+    #BURADAN AŞAĞISI QT DESIGNER TASARIMIM HARİCİNDEKİLER
+
+
+
+
+
+
+    def press_it(self, pressed):  # here is for numbers 0 To 9
+        #ekranda olanı yakala;
+        screen = self.label.text()
+        if pressed == 'C':
+                self.label.setText('0')
+        elif pressed in ["*","/","-","+"]:
+                if self.label.text()[len(self.label.text())-1] in ["*","/","-","+"]:
+                        screen=screen[:-1]  # sondaki karakter işlem ise bunu sil
+                        self.label.setText(f'{screen}{pressed}')
+                else:
+                        self.label.setText(f'{screen}{pressed}')
+
+        else: 
+                #0 ile başlıyor mu kontrol et ve 0'ı sil
+                if self.label.text() == '0':
+                        # self.label.setText(self.label.text[:-1])
+                        _str = self.label.text()
+                        _str_new = _str.replace("0", pressed)
+                        self.label.setText(_str_new)
+                        # self.label.setText(f'{self.label.text()}{pressed}')
+                else:
+                        self.label.setText(f'{self.label.text()}{pressed}')  #tıklananları ekleyerek gitmesi için
+
+
+    def decimal_it(self, decimalled): # here is for dot To decimal it
+        #ekranda olanı yakala;
+        screen = self.label.text()
+        if screen[-1] == '.':
+                pass
+        else:
+                self.label.setText(f"{screen}.")  # üst üste decimal işareti koyulmaması için
+
+    def math_result(self): # To calculate and show the result
+        #ekranda olanı yakala;
+        screen = self.label.text()  ### 3.1*2
+        if screen[len(screen)-1] in ["*","/","-","+"]:  # son karakter ne ise önceki sayıyı o işlemle operasyona soksun
+                _operator = screen[len(screen)-1]
+                result = str((eval(screen[:-1])))
+                result += _operator
+                result +=  str(eval(screen[:-1]))
+                result = float(eval(result))
+                #decimal yoksa yazmasın
+                resultList = split(str(result))  ### ('', '10.2')
+                if result.is_integer() :
+                        deci_index = resultList[1].index(".")
+                        result=str(result)
+                        self.label.setText(result[:deci_index]) #küsüratı almadan yaz
+                else:
+                        self.label.setText(str(result))
+                
+        else:
+                result = float(eval(screen))  ### "6.2"
+                #decimal yoksa yazmasın
+                resultList = split(str(result))  ### ('', '10.2')
+                if result.is_integer() :
+                        deci_index = resultList[1].index(".")
+                        result=str(result)
+                        self.label.setText(result[:deci_index]) #küsüratı almadan yaz
+                else:
+                        self.label.setText(str(result))
+
+    def remove_it(self): # here is for Delete one char
+        #ekranda olanı yakala;
+        screen = self.label.text()
+        #son karakteri sil;
+        screen = screen[:-1]
+        #ekrana yaz;
+        self.label.setText(screen)
+
+    def clear_it(self): # here is for C To clear all
+        screen = "0"
+        self.label.setText(screen)
+        
+
+
+        """ TO DO
+        v       sonda işlem işareti varken tekrar işleme basınca sona ekleme, sondaki işlemi değiştir
+        v       bölümde eğer tam bölünürse float değil integer olarak göster
+        v       decimal'e birden fazla basamasın
+        v       başta sıfır varsa yeni sayı girince değiştir, ondalıksa bırak
+        v       sonunda işlem varken = diyince kendisiyle çarp (karesini al)
+        v       pencere bütüyüp küçültülemesin
+
+        """
+
+
+
+
+
+    #BURADAN YUKARISI QT DESIGNER TASARIMIM HARİCİNDEKİ EKLENENLER
+
+
+
+
+
+
+
+
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.eight_pbtn.setText(_translate("MainWindow", "8"))
+        self.four_pbtn.setText(_translate("MainWindow", "4"))
+        self.percent_pbtn.setText(_translate("MainWindow", "%"))
+        self.dot_pbtn.setText(_translate("MainWindow", "."))
+        self.one_pbtn.setText(_translate("MainWindow", "1"))
+        self.seven_pbtn.setText(_translate("MainWindow", "7"))
+        self.five_pbtn.setText(_translate("MainWindow", "5"))
+        self.two_pbtn.setText(_translate("MainWindow", "2"))
+        self.zero_pbtn.setText(_translate("MainWindow", "0"))
+        self.six_pbtn.setText(_translate("MainWindow", "6"))
+        self.three_pbtn.setText(_translate("MainWindow", "3"))
+        self.nine_pbtn.setText(_translate("MainWindow", "9"))
+        self.clear_pbtn.setText(_translate("MainWindow", "C"))
+        self.equal_pbtn.setText(_translate("MainWindow", "="))
+        self.addition_pbtn.setText(_translate("MainWindow", "+"))
+        self.substract_pbtn.setText(_translate("MainWindow", "-"))
+        self.multiply_pbtn.setText(_translate("MainWindow", "x"))
+        self.divide_pbtn.setText(_translate("MainWindow", "/"))
+        self.delete_pbtn.setText(_translate("MainWindow", " ←"))
+        self.label.setText(_translate("MainWindow", "0"))
+
+
+if __name__ == "__main__":
+    import sys
+
+    app = QtWidgets.QApplication(sys.argv)
+
+    MainWindow = QtWidgets.QMainWindow()
+    MainWindow.setWindowOpacity(0.9)
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
