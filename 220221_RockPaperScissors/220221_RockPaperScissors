@@ -7,7 +7,9 @@
 # WARNING! All changes made in this file will be lost!
 
 from cgitb import text
+from re import X
 from PyQt5 import QtCore, QtGui, QtWidgets
+from random import randint, choice
 
 class Ui_MainWindow(object):
     # def btnClk(self):
@@ -21,8 +23,10 @@ class Ui_MainWindow(object):
     #         print("3")
     #         self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Downloads\scissors.png"))
     
+
     
     def setupUi(self, MainWindow):
+   
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(825, 446)
         MainWindow.setStyleSheet("background-color: rgb(141, 91, 145);")
@@ -33,7 +37,7 @@ class Ui_MainWindow(object):
         self.pic_p1.setGeometry(QtCore.QRect(50, 0, 261, 261))
         self.pic_p1.setText("")
         # self.pic_p1.setPixmap(QtGui.QPixmap(":/newPrefix_paper/paper.png"))
-        self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Downloads\q_mark.png"))
+        self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\q_mark.png"))
         self.pic_p1.setScaledContents(True)
         self.pic_p1.setAlignment(QtCore.Qt.AlignCenter)
         self.pic_p1.setObjectName("pic_p1")
@@ -43,28 +47,28 @@ class Ui_MainWindow(object):
         self.pic_p2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.pic_p2.setText("")
         # self.pic_p2.setPixmap(QtGui.QPixmap(":/newPrefix_paper/paper.png"))
-        self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Downloads\paper.png"))
+        self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\q_mark.png"))
         self.pic_p2.setScaledContents(True)
         self.pic_p2.setAlignment(QtCore.Qt.AlignCenter)
         self.pic_p2.setObjectName("pic_p2")
 
-        self.pbttn_rock = QtWidgets.QPushButton(self.centralwidget)
+        self.pbttn_rock = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.clicked_rock())
         self.pbttn_rock.setGeometry(QtCore.QRect(280, 330, 91, 51))
         self.pbttn_rock.setStyleSheet("background-color: rgb(221, 72, 112)")
         self.pbttn_rock.setObjectName("pbttn_rock")
 
-        self.pbttn_paper = QtWidgets.QPushButton(self.centralwidget)
+        self.pbttn_paper = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.clicked_paper())
         self.pbttn_paper.setGeometry(QtCore.QRect(370, 330, 91, 51))
         self.pbttn_paper.setStyleSheet("background-color: rgb(255, 221, 85);")
         self.pbttn_paper.setObjectName("pbttn_paper")
 
-        self.pbttn_scissors = QtWidgets.QPushButton(self.centralwidget)
+        self.pbttn_scissors = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.clicked_scissors())
         self.pbttn_scissors.setGeometry(QtCore.QRect(460, 330, 91, 51))
         self.pbttn_scissors.setStyleSheet("background-color: rgb(115, 218, 225);")
         self.pbttn_scissors.setObjectName("pbttn_scissors")
 
         self.lbl_whowin = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_whowin.setGeometry(QtCore.QRect(300, 110, 241, 41))
+        self.lbl_whowin.setGeometry(QtCore.QRect(300, 110, 241, 100))
 
         font = QtGui.QFont()
         font.setFamily("Century Gothic")
@@ -159,28 +163,103 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+    #-----------------------------------------------------------
+    #-----------------------------------------------------------
+    #-----------------------------------------------------------
+
+    def clicked_rock(self):
+        global clickedname
+        clickedname = "R"
+        self.the_round()
+
+    def clicked_paper(self):
+        global clickedname
+        clickedname = "P"
+        self.the_round()
+    def clicked_scissors(self):
+        global clickedname
+        clickedname = "S"
+        self.the_round()
+
+    # def try_general_click(self):
+    #     if self.
+
+    def the_round(self):
+        # ------------------------NFC--------------------
+        cpu_choice = choice(["R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S"])
+        if cpu_choice == "R":
+            self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\rock.png"))
+        elif cpu_choice == "P":
+            self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\paper.png"))
+        elif cpu_choice == "S":
+            self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\scissors.png"))
+        else:
+            print("Error 113")
+        # -----------------------PLAYER 1-----------------
+        # clickedname =""
+        if clickedname == "R":
+            self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\rock.png"))
+        elif clickedname == "P":
+            self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\paper.png"))
+        elif clickedname == "S":
+            self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\scissors.png"))
+        else:
+            print("Error 114,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
+        #--------------------SCORES AND TITLES-------------
+        global score_user, score_cpu
+        score_user = 0
+        score_cpu = 0
+        if clickedname == cpu_choice:
+            self.lbl_whowin.setText("It's drawn!")
+        else:
+            if (clickedname == "R" and cpu_choice =="S") or (clickedname == "P" and cpu_choice =="R") or (clickedname == "S" and cpu_choice =="P"):
+                score_user += 1
+                self.lbl_whowin .setText("You win!")
+            elif (clickedname == "R" and cpu_choice =="P") or (clickedname == "P" and cpu_choice =="S") or (clickedname == "S" and cpu_choice =="R"):
+                score_cpu += 1
+                self.lbl_whowin .setText("You lost!")
+            else:
+                print("Error 115,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
+
+
 
         
-    def method_1(self):
-        text = MainWindow.lbl_whowin.text()
-        MainWindow.lbl_whowin.setText(text+"changed")
-    
-    def clickbuttons(method_1):
-        MainWindow.pbttn_rock.clicked.connect(method_1)
+        
+    # def paper_it(self):
+    #     self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\paper.png"))
+    #     self.random_cpu_choice()
+    # def rock_it(self):
+    #     self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\rock.png"))
+    #     self.random_cpu_choice()
+    # def scissors_it(self):
+    #     self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\scissors.png"))
+    #     self.random_cpu_choice()
+       
+    # def whowin(self):
+    #     pass
+
+    """ TO DO
+        Score hesapla; İki sonuç eşitse değişmez, kim yendiğini bul ve +1 yap
+        Pencere boyutu sabit olsun
+        path'ler variable'lara tanımlanıp def ile image atamalar yapılabilir
+
+    """
+
+
 
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Rock - Paper - Scissors Game   by Koral"))
         self.pbttn_rock.setText(_translate("MainWindow", "ROCK"))
         self.pbttn_paper.setText(_translate("MainWindow", "PAPER"))
         self.pbttn_scissors.setText(_translate("MainWindow", "SCISSORS"))
-        self.lbl_whowin.setText(_translate("MainWindow", "DRAWN !"))
+        self.lbl_whowin.setText(_translate("MainWindow", "Let's see who\n will win!"))
         self.lbl_namep1.setText(_translate("MainWindow", "You"))
         self.lbl_namep2.setText(_translate("MainWindow", "NPC"))
         self.lbl_score.setText(_translate("MainWindow", "Score"))
-        self.lbl_score_p1.setText(_translate("MainWindow", "23"))
-        self.lbl_score_p2.setText(_translate("MainWindow", "23"))
+        self.lbl_score_p1.setText(_translate("MainWindow", "0"))
+        self.lbl_score_p2.setText(_translate("MainWindow", "0"))
         self.pbttn_reset.setText(_translate("MainWindow", "Reset"))
 
 
