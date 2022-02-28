@@ -1,34 +1,28 @@
 # -*- coding: utf-8 -*-
-
 # Form implementation generated from reading ui file 'Rock_Pap_Scis.ui'
-#
-# Created by: PyQt5 UI code generator 5.9.2
-#
-# WARNING! All changes made in this file will be lost!
 
 from cgitb import text
+from json.tool import main
 from re import X
 from PyQt5 import QtCore, QtGui, QtWidgets
-from random import randint, choice
+from random import choice
 
 class Ui_MainWindow(object):
-    # def btnClk(self):
-    #     if self == self.pbttn_rock:
-    #         print("1")
-    #         self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Downloads\rock.png"))
-    #     elif self == self.pbttn_paper:
-    #         print("2")
-    #         self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Downloads\paper.png"))
-    #     elif self == self.pbttn_scissors:
-    #         print("3")
-    #         self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Downloads\scissors.png"))
-    
 
-    
+    def __init__(self):  # variable'ları initialize etmek için en başa yazılır. Aşağılarda kullanabilmek için.
+        self.score_user_sh = 0
+        self.score_cpu_sh = 0
+
+
     def setupUi(self, MainWindow):
-   
+        # path_ = str("C:\\Users\koral\\Desktop\\CLARUSWAY\For GitHub\\Assigments & SelfProjects\\220221_RockPaperScissors\\")
+        global path_
+        path_ = r"C:/Users/koral/Desktop/CLARUSWAY/For GitHub/Assigments & SelfProjects/220221_RockPaperScissors/"
+
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(825, 446)
+        MainWindow.setFixedSize(825, 446)
         MainWindow.setStyleSheet("background-color: rgb(141, 91, 145);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -36,8 +30,7 @@ class Ui_MainWindow(object):
         self.pic_p1 = QtWidgets.QLabel(self.centralwidget)
         self.pic_p1.setGeometry(QtCore.QRect(50, 0, 261, 261))
         self.pic_p1.setText("")
-        # self.pic_p1.setPixmap(QtGui.QPixmap(":/newPrefix_paper/paper.png"))
-        self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\q_mark.png"))
+        self.pic_p1.setPixmap(QtGui.QPixmap(path_ + "q_mark.png"))
         self.pic_p1.setScaledContents(True)
         self.pic_p1.setAlignment(QtCore.Qt.AlignCenter)
         self.pic_p1.setObjectName("pic_p1")
@@ -46,8 +39,7 @@ class Ui_MainWindow(object):
         self.pic_p2.setGeometry(QtCore.QRect(530, 0, 261, 261))
         self.pic_p2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.pic_p2.setText("")
-        # self.pic_p2.setPixmap(QtGui.QPixmap(":/newPrefix_paper/paper.png"))
-        self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\q_mark.png"))
+        self.pic_p2.setPixmap(QtGui.QPixmap(path_ + "q_mark.png"))
         self.pic_p2.setScaledContents(True)
         self.pic_p2.setAlignment(QtCore.Qt.AlignCenter)
         self.pic_p2.setObjectName("pic_p2")
@@ -146,7 +138,7 @@ class Ui_MainWindow(object):
         self.lbl_score_p2.setAlignment(QtCore.Qt.AlignCenter)
         self.lbl_score_p2.setObjectName("lbl_score_p2")
 
-        self.pbttn_reset = QtWidgets.QPushButton(self.centralwidget)
+        self.pbttn_reset = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.reset_button())
         self.pbttn_reset.setGeometry(QtCore.QRect(750, 350, 51, 31))
         self.pbttn_reset.setStyleSheet("background-color: qradialgradient(spread:repeat, cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0 rgba(0, 169, 255, 147), stop:0.497326 rgba(0, 0, 0, 147), stop:1 rgba(0, 169, 255, 147));\n"
 "border-color: rgb(7, 7, 7);\n" 
@@ -163,90 +155,94 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-    #-----------------------------------------------------------
-    #-----------------------------------------------------------
-    #-----------------------------------------------------------
 
-    def clicked_rock(self):
+    #-------------------GAME CONTROLS------------------------------------
+
+    def clicked_rock(self):  # runs when clicked to ROCK push button
         global clickedname
         clickedname = "R"
         self.the_round()
-
-    def clicked_paper(self):
+    def clicked_paper(self):  # runs when clicked to PAPER push button
         global clickedname
         clickedname = "P"
         self.the_round()
-    def clicked_scissors(self):
+    def clicked_scissors(self): # runs when clicked to SCISSORS push button
         global clickedname
         clickedname = "S"
         self.the_round()
 
-    # def try_general_click(self):
-    #     if self.
+    def reset_button(self):  # runs when clicked to RESET push button
+        self.score_user_sh = 0
+        self.score_cpu_sh = 0
+        self.pic_p2.setPixmap(QtGui.QPixmap(path_ + "q_mark.png"))
+        self.pic_p1.setPixmap(QtGui.QPixmap(path_ + "q_mark.png"))
+        self.update_labels()
+
+    def update_labels(self):
+        self.lbl_whowin.setText("Let's see \nwho will win!")  # Title
+        self.lbl_score_p1.setText(str(self.score_user_sh))  # User Score
+        self.lbl_score_p2.setText(str(self.score_cpu_sh))  # CPU Score
 
     def the_round(self):
-        # ------------------------NFC--------------------
+        # ------------------------CPU Player--------------------
         cpu_choice = choice(["R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S"])
+
         if cpu_choice == "R":
-            self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\rock.png"))
+            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "rock.png"))
         elif cpu_choice == "P":
-            self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\paper.png"))
+            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "paper.png"))
         elif cpu_choice == "S":
-            self.pic_p2.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\scissors.png"))
+            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "scissors.png"))
         else:
-            print("Error 113")
+            print("Error 113,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
+
         # -----------------------PLAYER 1-----------------
-        # clickedname =""
+        
         if clickedname == "R":
-            self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\rock.png"))
+            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "rock.png"))
         elif clickedname == "P":
-            self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\paper.png"))
+            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "paper.png"))
         elif clickedname == "S":
-            self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\scissors.png"))
+            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "scissors.png"))
         else:
             print("Error 114,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
+
         #--------------------SCORES AND TITLES-------------
-        global score_user, score_cpu
-        score_user = 0
-        score_cpu = 0
-        if clickedname == cpu_choice:
+        
+
+        #CALCULATIONS ::
+
+        # DRAWN
+        if clickedname == cpu_choice:  
             self.lbl_whowin.setText("It's drawn!")
+            self.lbl_score_p1 .setText(str(self.score_user_sh))
+            self.lbl_score_p2 .setText(str(self.score_cpu_sh))
         else:
-            if (clickedname == "R" and cpu_choice =="S") or (clickedname == "P" and cpu_choice =="R") or (clickedname == "S" and cpu_choice =="P"):
-                score_user += 1
-                self.lbl_whowin .setText("You win!")
+            # YOU WİN
+            if (clickedname == "R" and cpu_choice =="S") or (clickedname == "P" and cpu_choice =="R") or (clickedname == "S" and cpu_choice =="P"):  
+                self.score_user_sh += 1
+                self.lbl_score_p1.setText(str(self.score_user_sh))
+                self.lbl_whowin.setText("You win!")
+                
+            # YOU LOST
             elif (clickedname == "R" and cpu_choice =="P") or (clickedname == "P" and cpu_choice =="S") or (clickedname == "S" and cpu_choice =="R"):
-                score_cpu += 1
-                self.lbl_whowin .setText("You lost!")
+                self.score_cpu_sh += 1
+                self.lbl_score_p2.setText(str(self.score_cpu_sh))
+                self.lbl_whowin.setText("You lost!")
+                
             else:
                 print("Error 115,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
+            print(str(path_)+"rock.png")
+            print(type(path_))
 
-
-
-        
-        
-    # def paper_it(self):
-    #     self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\paper.png"))
-    #     self.random_cpu_choice()
-    # def rock_it(self):
-    #     self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\rock.png"))
-    #     self.random_cpu_choice()
-    # def scissors_it(self):
-    #     self.pic_p1.setPixmap(QtGui.QPixmap(r"C:\Users\koral\Desktop\CLARUSWAY\For GitHub\Assigments & SelfProjects\220221_RockPaperScissors\scissors.png"))
-    #     self.random_cpu_choice()
-       
-    # def whowin(self):
-    #     pass
+    
+         
 
     """ TO DO
-        Score hesapla; İki sonuç eşitse değişmez, kim yendiğini bul ve +1 yap
-        Pencere boyutu sabit olsun
-        path'ler variable'lara tanımlanıp def ile image atamalar yapılabilir
-
+        v   Score hesapla; İki sonuç eşitse değişmez, kim yendiğini bul ve +1 yap
+        v   Pencere boyutu sabit olsun
+        v   path_'ler variable'lara tanımlanıp def ile image atamalar yapılabilir
     """
-
-
-
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -271,4 +267,5 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+    
 
