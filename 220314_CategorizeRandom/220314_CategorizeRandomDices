@@ -1,0 +1,22 @@
+import random
+
+all_dict = {}
+for i in range(1,7):
+	for j in range(1,7):
+		if (i,j) and (j,i) not in all_dict:
+			 all_dict[i,j] = []  # value is empty now, we'll all_dictd dice pairs later
+
+for _ in range(101):
+	a, b = random.randint(1,7), random.randint(1,7)
+
+	if (a,b) in all_dict:
+		all_dict[(a,b)].append([a,b])
+	elif (b,a) in all_dict:
+		all_dict[(b,a)].append([a,b])
+
+# for key, value in all_dict.items():
+# 	print(key, " : ", value)
+
+for i, j in all_dict.items():
+	print(f"Dice {i} repeats {len(j)} times")
+
