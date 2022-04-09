@@ -188,22 +188,22 @@ class Ui_MainWindow(object):
         cpu_choice = choice(["R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S","R","P","S"])
 
         if cpu_choice == "R":
-            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "rock.png"))
+            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "rock.png"))  # set ROCK image if R is pressed
         elif cpu_choice == "P":
-            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "paper.png"))
+            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "paper.png"))  # set PAPER image if R is pressed
         elif cpu_choice == "S":
-            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "scissors.png"))
+            self.pic_p2.setPixmap(QtGui.QPixmap(str(path_) + "scissors.png")) # set SCISSORS image if R is pressed
         else:
             print("Error 113,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
 
         # -----------------------PLAYER 1-----------------
         
         if clickedname == "R":
-            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "rock.png"))
+            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "rock.png"))  # set ROCK image if R is pressed
         elif clickedname == "P":
-            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "paper.png"))
+            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "paper.png"))  # set PAPER image if R is pressed
         elif clickedname == "S":
-            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "scissors.png"))
+            self.pic_p1.setPixmap(QtGui.QPixmap(str(path_) + "scissors.png"))  # set SCISSORS image if R is pressed
         else:
             print("Error 114,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
 
@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.lbl_score_p2.setText(str(self.score_cpu_sh))
                 self.lbl_whowin.setText("You lost!")
                 
-            else:
+            else: #debugger
                 print("Error 115,   cpu_choice : ", cpu_choice," clickedname : ",clickedname)
             print(str(path_)+"rock.png")
             print(type(path_))
@@ -242,6 +242,7 @@ class Ui_MainWindow(object):
         v   Score hesapla; İki sonuç eşitse değişmez, kim yendiğini bul ve +1 yap
         v   Pencere boyutu sabit olsun
         v   path_'ler variable'lara tanımlanıp def ile image atamalar yapılabilir
+            Score'u 10'a ulaşan olunca "Player X win the game" yazsın, RESET butonu yerine "Play Again" yazsın
     """
 
     def retranslateUi(self, MainWindow):
